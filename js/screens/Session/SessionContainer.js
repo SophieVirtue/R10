@@ -8,7 +8,7 @@ export default class SessionContainer extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> Session! </Text>
       </View>
     );
   }

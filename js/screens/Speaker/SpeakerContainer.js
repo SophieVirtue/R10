@@ -8,7 +8,7 @@ export default class SpeakerContainer extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> Speaker! </Text>
       </View>
     );
   }

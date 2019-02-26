@@ -8,7 +8,7 @@ export default class ScheduleContainer extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> Schedule! </Text>
       </View>
     );
   }

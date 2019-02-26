@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import About from './About';
 import gql from 'graphql-tag';
@@ -19,7 +19,7 @@ export default class AboutContainer extends Component {
           `}
         >
         {({ loading, error, data }) => {
-          console.log(data);
+          if (loading) return <ActivityIndicator />
           return <About data={data} />;
     }}
     </Query>

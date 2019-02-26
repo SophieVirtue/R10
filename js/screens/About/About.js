@@ -6,9 +6,6 @@ export default class About extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* {this.props.isLoading ? (
-          <ActivityIndicator size="large" />
-        ) : ( */}
         <Image
           style={{ width: 200, height: 50 }}
           source={require("../../assets/r10_logo.png")}
@@ -39,7 +36,6 @@ export default class About extends Component {
           keyExtractor={(item, index) => "" + index}
         />
         <Text>&copy; RED Academy 2017</Text>
-        {/* )} */}
       </View>
     );
   }

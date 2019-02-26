@@ -1,8 +1,9 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
+import { colors } from '../../config/styles';
 
 const styles = StyleSheet.create({
     container: { 
-        backgroundColor: 'white',
+        backgroundColor: colors.blue,
         height: '100%',
         marginTop: 30
       },
