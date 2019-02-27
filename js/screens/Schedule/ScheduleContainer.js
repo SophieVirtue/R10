@@ -28,10 +28,10 @@ static navigationOptions = {
               title
               description
               speaker {
-                bio
                 id
-                image
                 name
+                bio
+                image
                 url
               }
             }

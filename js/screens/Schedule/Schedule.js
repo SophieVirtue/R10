@@ -18,12 +18,13 @@ export default class Schedule extends Component {
                   title: item.title,
                   location: item.location,
                   startTime: item.startTime,
-                  id: item.id
+                  id: item.id,
+                  speaker: item.speaker
                 })
               }>
-              <View>
-                  <Text>{item.title}</Text>
-                  <Text>{item.location}</Text>
+              <View style={styles.block}>
+                  <Text style={styles.title}>{item.title}</Text>
+                  <Text style={styles.location}>{item.location}</Text>
                   </View>
                 </TouchableHighlight>
               </View>
@@ -31,7 +32,7 @@ export default class Schedule extends Component {
           }}
           sections={this.props.data}
           renderSectionHeader={({ section: { title } }) => (
-            <Text style={{ backgroundColor: "black", color: "white" }}>
+            <Text style={styles.time}>
               {moment(title).format("LT")}
             </Text>
           )}
