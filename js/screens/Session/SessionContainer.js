@@ -29,6 +29,7 @@ export default class SessionContainer extends Component {
               bio
               name
               image
+              url
             }
           }
         `}
@@ -39,13 +40,13 @@ export default class SessionContainer extends Component {
 
           return (
             <Session
-              data={data.allSpeakers}
+              data={data.allSpeakers[0]}
               description={description}
               title={title}
               location={location}
               startTime={startTime}
               speaker={speaker}
-              navigation={this.props.navigation}
+              navigation={navigation}
             />
           );
         }}

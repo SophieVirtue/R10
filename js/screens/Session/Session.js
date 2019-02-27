@@ -17,10 +17,11 @@ export default class Session extends Component {
             <TouchableHighlight
               onPress={() =>
                 this.props.navigation.navigate("Speaker", {
-                  bio: item.bio,
-                  image: item.image,
-                  name: item.name,
-                  id: item.id
+                  bio: this.props.speaker.bio,
+                  image: this.props.speaker.image,
+                  name: this.props.speaker.name,
+                  id: this.props.speaker.id,
+                  url: this.props.speaker.url
                 })
               }
             >
