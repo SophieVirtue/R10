@@ -8,7 +8,7 @@ export default class About extends Component {
       <View style={styles.container}>
         <Image
           style={{ width: 200, height: 50 }}
-          source={require("../../assets/r10_logo.png")}
+          source={require("../../assets/images/r10_logo.png")}
         />
         <Text>
           R10 is a conference that focuses on just about any topic related to

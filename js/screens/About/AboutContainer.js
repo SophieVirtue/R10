@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ActivityIndicator } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import About from './About';
 import gql from 'graphql-tag';
 
 export default class AboutContainer extends Component {
+
+  static navigationOptions = {
+    title: 'About',
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontSize: 25
+    }
+  };
+
   render() {
     return (
         <Query query={gql`
@@ -19,7 +28,8 @@ export default class AboutContainer extends Component {
           `}
         >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />
+          if (loading) return <ActivityIndicator />;
+          if (error) return <Text>Error</Text>;
           return <About data={data} />;
     }}
     </Query>

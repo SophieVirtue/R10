@@ -5,6 +5,15 @@ import Maps from './Maps';
 import gql from 'graphql-tag';
 
 export default class MapsContainer extends Component {
+
+  static navigationOptions = {
+    title: 'Map',
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontSize: 25
+    }
+  };
+
   render() {
     return (
       <View>

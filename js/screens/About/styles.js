@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: { 
         backgroundColor: colors.blue,
         height: '100%',
-        marginTop: 30
+        // marginTop: 30
       },
       list: {
         color: 'black', 

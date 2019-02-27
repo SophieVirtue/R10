@@ -5,6 +5,15 @@ import Faves from './Faves';
 import gql from 'graphql-tag';
 
 export default class FavesContainer extends Component {
+
+  static navigationOptions = {
+    title: 'Faves',
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontSize: 25
+    }
+  };
+
   render() {
     return (
       <View>
