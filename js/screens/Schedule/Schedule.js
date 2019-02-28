@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, SectionList, TouchableHighlight } from "react-native";
 import styles from "./styles";
 import moment from "moment";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Schedule extends Component {
   render() {
@@ -25,6 +26,8 @@ export default class Schedule extends Component {
               <View style={styles.block}>
                   <Text style={styles.title}>{item.title}</Text>
                   <Text style={styles.location}>{item.location}</Text>
+                  
+                  <Icon name="ios-heart" color="red" size={16} />
                   </View>
                 </TouchableHighlight>
               </View>

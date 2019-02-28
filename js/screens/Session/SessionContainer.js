@@ -3,6 +3,7 @@ import { Text, ActivityIndicator } from "react-native";
 import { Query } from "react-apollo";
 import Session from "./Session";
 import gql from "graphql-tag";
+import FavesContext from "../../context";
 
 export default class SessionContainer extends Component {
   static navigationOptions = {
@@ -18,6 +19,7 @@ export default class SessionContainer extends Component {
     let description = navigation.getParam("description");
     let title = navigation.getParam("title");
     let location = navigation.getParam("location");
+    let id = navigation.getParam("id");
     let startTime = navigation.getParam("startTime");
     let speaker = navigation.getParam("speaker");
     return (
@@ -39,15 +41,25 @@ export default class SessionContainer extends Component {
           if (error) return <Text>Error</Text>;
 
           return (
-            <Session
-              data={data.allSpeakers[0]}
-              description={description}
-              title={title}
-              location={location}
-              startTime={startTime}
-              speaker={speaker}
-              navigation={navigation}
-            />
+            <FavesContext.Consumer>
+              {({ faveIds, setFaveId, removeFaveId }) => {
+                return (
+                  <Session
+                    data={data.allSpeakers[0]}
+                    description={description}
+                    title={title}
+                    id={id}
+                    location={location}
+                    startTime={startTime}
+                    speaker={speaker}
+                    navigation={navigation}
+                    setFaveId={setFaveId}
+                    removeFaveId={removeFaveId}
+                    faveIds={faveIds}
+                  />
+                );
+              }}
+            </FavesContext.Consumer>
           );
         }}
       </Query>

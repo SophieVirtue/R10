@@ -3,18 +3,17 @@ import { Text, ActivityIndicator } from "react-native";
 import { Query } from "react-apollo";
 import Schedule from "./Schedule";
 import gql from "graphql-tag";
-import { formatSessionData } from '../../lib/helpers/dataFormatHelpers';
-import { colors } from "../../config/styles";
+import { formatSessionData } from "../../lib/helpers/dataFormatHelpers";
+import FavesContext from '../../context';
 
 export default class ScheduleContainer extends Component {
-
-static navigationOptions = {
-  title: 'Schedule',
-  headerTintColor: '#fff',
-  headerTitleStyle: {
-    fontSize: 25
-  }
-};
+  static navigationOptions = {
+    title: "Schedule",
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontSize: 25
+    }
+  };
 
   render() {
     return (
@@ -41,11 +40,23 @@ static navigationOptions = {
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error</Text>;
-          return <Schedule data={formatSessionData(data.allSessions)} navigation={this.props.navigation} />;
+          return (
+            <FavesContext.Consumer>
+              {({ faveIds, setFaveId, removeFaveId }) => {
+                return (
+                  <Schedule
+                    data={formatSessionData(data.allSessions)}
+                    navigation={this.props.navigation}
+                    faveIds={faveIds}
+                    setFaveId={setFaveId}
+                    removeFaveId={removeFaveId}
+                  />
+                );
+              }}
+            </FavesContext.Consumer>
+          );
         }}
       </Query>
     );
   }
 }
-
-
