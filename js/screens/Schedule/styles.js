@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { colors } from '../../config/styles';
+import { colors, fonts } from '../../config/styles';
 
 const styles = StyleSheet.create({
     time: {
@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
       paddingBottom: 6,
       paddingLeft: 15,
       fontSize: 16, 
-      fontFamily: 'Montserrat'
+      fontFamily: fonts.regular
     },
     block: {
       paddingLeft: 15,
-      fontFamily: 'Montserrat'
+      fontFamily: fonts.regular
     },
     title: {
 

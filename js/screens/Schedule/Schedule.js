@@ -14,16 +14,20 @@ export default class Schedule extends Component {
             return (
               <View>
                 <TouchableHighlight
-                  onPress={() =>
-                    navigate("Session", {
-                      description: item.description,
-                      title: item.title,
-                      location: item.location,
-                      startTime: item.startTime,
-                      id: item.id,
-                      speaker: item.speaker
-                    })
-                  }
+                  onPress={() => {
+                    if (!item.speaker) {
+                      navigate("", {});
+                    } else {
+                      navigate("Session", {
+                        description: item.description,
+                        title: item.title,
+                        location: item.location,
+                        startTime: item.startTime,
+                        id: item.id,
+                        speaker: item.speaker
+                      });
+                    }
+                  }}
                 >
                   <View style={styles.block}>
                     <Text style={styles.title}>{item.title}</Text>

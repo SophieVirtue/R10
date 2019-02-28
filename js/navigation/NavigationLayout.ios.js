@@ -8,7 +8,7 @@ import MapsScreen from "../screens/Maps";
 import FavesScreen from "../screens/Faves";
 import SessionScreen from "../screens/Session";
 import ScheduleScreen from "../screens/Schedule";
-import { colors } from "../config/styles";
+import { colors, fonts } from "../config/styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { sharedNavigationOptions } from './config';
 
@@ -87,7 +87,7 @@ export default createBottomTabNavigator(
       inactiveTintColor: colors.mediumGrey,
       labelStyle: {
         fontSize: 10,
-        fontFamily: 'Montserrat'
+        fontFamily: fonts.regular
       },
       style: {
         backgroundColor: "#000"

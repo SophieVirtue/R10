@@ -1,14 +1,14 @@
 import React from "react";
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createDrawerNavigator
 } from "react-navigation";
 import AboutScreen from "../screens/About";
 import MapsScreen from "../screens/Maps";
 import FavesScreen from "../screens/Faves";
 import SessionScreen from "../screens/Session";
 import ScheduleScreen from "../screens/Schedule";
-import { colors } from "../config/styles";
+import { colors, fonts } from "../config/styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { sharedNavigationOptions } from './config';
 
@@ -58,7 +58,7 @@ const AboutStack = createStackNavigator(
     }
 );
 
-export default createBottomTabNavigator(
+export default createDrawerNavigator(
   {
     Schedule: ScheduleStack,
     Map: MapsStack,
@@ -67,27 +67,27 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      drawerIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === "Schedule") {
-          iconName = `ios-calendar`;
+          iconName = `md-calendar`;
         } else if (routeName === "Map") {
-          iconName = `ios-map`;
+          iconName = `md-map`;
         } else if (routeName === "Faves") {
-          iconName = `ios-heart`;
+          iconName = `md-heart`;
         } else if (routeName === "About") {
-          iconName = `ios-information-circle`;
+          iconName = `md-information-circle`;
         }
         return <Ionicons name={iconName} size={30} color={tintColor} />;
       }
     }),
-    tabBarOptions: {
+    drawerOptions: {
       activeTintColor: "#fff",
       inactiveTintColor: colors.mediumGrey,
       labelStyle: {
         fontSize: 10,
-        fontFamily: 'Montserrat'
+        fontFamily: fonts.regular
       },
       style: {
         backgroundColor: "#000"
