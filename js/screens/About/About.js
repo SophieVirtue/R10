@@ -5,32 +5,74 @@ import {
   Image,
   FlatList,
   LayoutAnimation,
-  ScrollView, 
-  TouchableOpacity
+  ScrollView,
+  TouchableOpacity,
+  Animated
 } from "react-native";
 import styles from "./styles";
+import Icon from "react-native-vector-icons/Ionicons";
+import { colors } from "../../config/styles";
 
 class CollapsibleCodeOfConduct extends Component {
-  state = { isOpen: false };
+  state = {
+    isOpen: false,
+    spinValue: new Animated.Value(0)
+  };
+
+  animateOpen() {
+    this.state.spinValue.setValue(0);
+    Animated.timing(this.state.spinValue, {
+      toValue: 1,
+      duration: 1000
+    }).start();
+  }
 
   _toggle() {
     LayoutAnimation.easeInEaseOut();
     this.setState({ isOpen: !this.state.isOpen });
+    this.animateOpen();
   }
 
   render() {
-    const { styles, item } = this.props;
+    const { item } = this.props;
+    // const animatedIcon = Animated.createAnimatedComponent(Icon);
+    const spinIcon = this.state.spinValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ["0deg", "360deg"]
+    });
+
     return (
       <View>
-        <TouchableOpacity style={styles.sessionTitle} onPress={() => this._toggle()}>
-        {this.state.isOpen === false ? (<View style={styles.flexTitle}><Text style={styles.sessionTitle}>+  </Text><Text style={styles.sessionTitle}>{item.title}</Text></View>) :
-        (<View style={styles.flexTitle}><Text style={styles.sessionTitle}>-  </Text><Text style={styles.sessionTitle}>{item.title}</Text></View>)
-        }
-         
+        <TouchableOpacity
+          style={styles.sessionTitle}
+          onPress={() => {
+            this._toggle();
+            this.animateOpen();
+          }}
+        >
+          {this.state.isOpen ? (
+            <View>
+              <View style={styles.flexTitle}>
+                <Animated.View style={{ transform: [{ rotate: spinIcon }] }}>
+                    <Icon name={"ios-remove"} size={20} color={colors.purple} />
+                </Animated.View>
+                <Text style={styles.sessionTitle}>{item.title}</Text>
+              </View>
+              <View>
+                <Text style={styles.sessionDescription}>
+                  {item.description}
+                </Text>
+              </View>
+            </View>
+          ) : (
+            <View style={styles.flexTitle}>
+              <Animated.View style={{ transform: [{ rotate: spinIcon }] }}>
+                  <Icon name={"ios-add"} size={20} color={colors.purple} />
+              </Animated.View>
+              <Text style={styles.sessionTitle}>{item.title}</Text>
+            </View>
+          )}
         </TouchableOpacity>
-        {this.state.isOpen ? (
-          <Text style={styles.sessionDescription}>{item.description}</Text>
-        ) : null}
       </View>
     );
   }
@@ -61,13 +103,13 @@ export default class About extends Component {
           renderItem={({ item }) => {
             return (
               <View style={styles.list}>
-                <CollapsibleCodeOfConduct styles={styles} item={item}/>
+                <CollapsibleCodeOfConduct item={item} />
               </View>
             );
           }}
           keyExtractor={(item, index) => "" + index}
         />
-          <Text>&copy; RED Academy 2017</Text>
+        <Text>&copy; RED Academy 2017</Text>
       </ScrollView>
     );
   }

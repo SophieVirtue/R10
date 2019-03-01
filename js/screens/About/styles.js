@@ -42,14 +42,15 @@ const styles = StyleSheet.create({
       },
       sessionTitle: {
         color: colors.purple,
-        paddingBottom: 18, 
+        paddingBottom: 10, 
         fontSize: 17,
-        fontFamily: fonts.regular
+        fontFamily: fonts.regular,
+        paddingLeft: 10
       },
       sessionDescription: {
         fontFamily: fonts.light, 
         fontSize: 17, 
-        paddingBottom: 18
+        paddingBottom: 10
       }
   });
 

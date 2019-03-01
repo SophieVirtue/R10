@@ -4,10 +4,12 @@ import {
   Text,
   TouchableHighlight,
   Image,
-  Button,
-  Platform
+  TouchableOpacity,
+  Platform,
+  ScrollView
 } from "react-native";
 import moment from "moment";
+import LinearGradient from 'react-native-linear-gradient'
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import { colors } from "../../config/styles";
@@ -15,7 +17,7 @@ import { colors } from "../../config/styles";
 export default class Session extends Component {
   render() {
     return (
-      <View style={styles.screen}>
+      <ScrollView style={styles.screen}>
         <View>
           <View style={styles.flexHeart}>
             <Text style={styles.location}>{this.props.location}</Text>
@@ -33,7 +35,9 @@ export default class Session extends Component {
             )}
           </View>
           <Text style={styles.title}>{this.props.title}</Text>
-          <Text style={styles.time}>{moment(this.props.startTime).format("LT")}</Text>
+          <Text style={styles.time}>
+            {moment(this.props.startTime).format("LT")}
+          </Text>
           <Text style={styles.description}>{this.props.description}</Text>
           <Text style={styles.location}>Presented by:</Text>
           <View>
@@ -49,37 +53,53 @@ export default class Session extends Component {
               }
             >
               <View style={styles.flexSpeaker}>
-              <Image
+                <Image
                   style={styles.image}
                   source={{ uri: this.props.speaker.image }}
                 />
-                <Text>{this.props.speaker.name}</Text>
+                <Text style={styles.speakerName}>
+                  {this.props.speaker.name}
+                </Text>
               </View>
             </TouchableHighlight>
           </View>
         </View>
         <View>
           {this.props.faveIds.includes(this.props.id) ? (
-            <Button
+            <TouchableOpacity
               onPress={() => {
                 this.props.removeFaveId(this.props.id);
               }}
-              title="Remove from Faves"
-              color="#841584"
-              accessibilityLabel="Unfavourite this Session"
-            />
+              style={styles.button}
+            >
+            <LinearGradient
+              colors={['#9963ea', '#8797D6']}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 0.0 }}
+              style={styles.rounded}
+            >
+              <Text style={styles.buttonText}>Remove from Faves</Text>
+            </LinearGradient>
+          </TouchableOpacity>
           ) : (
-            <Button
-              onPress={() => {
-                this.props.setFaveId(this.props.id);
-              }}
-              title="Add to Faves"
-              color="#841584"
-              accessibilityLabel="Favourite this Session"
-            />
+            <TouchableOpacity
+            onPress={() => {
+              this.props.setFaveId(this.props.id);
+            }}
+            style={styles.button}
+          >
+          <LinearGradient
+            colors={['#9963ea', '#8797D6']}
+            start={{ x: 0.0, y: 1.0 }}
+            end={{ x: 1.0, y: 0.0 }}
+            style={styles.rounded}
+          >
+            <Text style={styles.buttonText}>Add to Faves</Text>
+          </LinearGradient>
+        </TouchableOpacity>
           )}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

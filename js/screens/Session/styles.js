@@ -34,13 +34,38 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   flexSpeaker: {
-    flexDirection: "row"
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomColor: colors.lightGrey,
+    borderBottomWidth: 1, 
+    paddingBottom: 20,
+    marginBottom: 20
   },
-  image: { 
-    width: 65, 
+  image: {
+    width: 65,
     height: 65,
-    borderRadius: 50
+    borderRadius: 32.5
   },
+  speakerName: {
+    paddingLeft: 20,
+    fontSize: 18,
+    fontFamily: fonts.regular
+  }, 
+  buttonText: {
+    alignSelf: 'center',
+    fontFamily: fonts.regular,
+    fontSize: 16,
+    color: colors.white,
+    paddingTop: 13,
+    paddingBottom: 13
+  }, 
+  button: {
+    width: '60%',
+    alignSelf: 'center'
+  },
+  rounded: {
+    borderRadius: 25
+  }
 });
 
 export default styles;
