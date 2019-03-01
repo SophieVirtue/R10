@@ -10,6 +10,7 @@ import {
 import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
+import { colors } from "../../config/styles";
 
 export default class Session extends Component {
   render() {
@@ -23,8 +24,8 @@ export default class Session extends Component {
                 ios: "ios-heart",
                 android: "md-heart"
               })}
-              size={16}
-              color="red"
+              size={18}
+              color={colors.red}
             />
           ) : (
             <Text />

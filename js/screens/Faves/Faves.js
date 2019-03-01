@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { View, Text, SectionList, TouchableHighlight, Platform } from "react-native";
+import {
+  View,
+  Text,
+  SectionList,
+  TouchableHighlight,
+  Platform
+} from "react-native";
 import styles from "./styles";
 import moment from "moment";
 import Icon from "react-native-vector-icons/Ionicons";
+import { colors } from "../../config/styles";
 
 export default class Faves extends Component {
   render() {
@@ -27,19 +34,21 @@ export default class Faves extends Component {
                 >
                   <View style={styles.block}>
                     <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.location}>{item.location}</Text>
-                    {this.props.faveIds.includes(item.id) ? (
-                       <Icon
-                       name={Platform.select({
-                         ios: 'ios-heart',
-                         android: 'md-heart'
-                       })}
-                       size={16}
-                       color='red'
-                     />
-                    ) : (
-                      <Text />
-                    )}
+                    <View style={styles.flexHeart}>
+                      <Text style={styles.location}>{item.location}</Text>
+                      {this.props.faveIds.includes(item.id) ? (
+                        <Icon
+                          name={Platform.select({
+                            ios: "ios-heart",
+                            android: "md-heart"
+                          })}
+                          size={18}
+                          color={colors.red}
+                        />
+                      ) : (
+                        <Text />
+                      )}
+                    </View>
                   </View>
                 </TouchableHighlight>
               </View>
@@ -55,4 +64,3 @@ export default class Faves extends Component {
     );
   }
 }
-

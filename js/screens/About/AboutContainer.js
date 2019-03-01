@@ -3,14 +3,16 @@ import { Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import About from './About';
 import gql from 'graphql-tag';
+import { colors, fonts } from '../../config/styles';
 
 export default class AboutContainer extends Component {
 
   static navigationOptions = {
     title: 'About',
-    headerTintColor: '#fff',
+    headerTintColor: colors.white,
     headerTitleStyle: {
-      fontSize: 25
+      fontSize: 22,
+      fontFamily: fonts.regular
     }
   };
 

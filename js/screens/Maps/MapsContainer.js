@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { colors } from '../../config/styles';
 import { Query } from 'react-apollo';
 import Maps from './Maps';
 import gql from 'graphql-tag';
@@ -8,7 +9,7 @@ export default class MapsContainer extends Component {
 
   static navigationOptions = {
     title: 'Map',
-    headerTintColor: '#fff',
+    headerTintColor: colors.white,
     headerTitleStyle: {
       fontSize: 25
     }

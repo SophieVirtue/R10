@@ -3,7 +3,7 @@ import { colors, fonts } from '../../config/styles';
 
 const styles = StyleSheet.create({
     container: { 
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         height: '100%',
         padding: 15,
         paddingBottom: 0
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.regular
       },
       list: {
-        color: 'black', 
+        color: colors.black, 
         flexDirection: 'column'
       },
       sessionTitle: {
