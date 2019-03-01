@@ -15,25 +15,27 @@ import { colors } from "../../config/styles";
 export default class Session extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.screen}>
         <View>
-          <Text>{this.props.location}</Text>
-          {this.props.faveIds.includes(this.props.id) ? (
-            <Icon
-              name={Platform.select({
-                ios: "ios-heart",
-                android: "md-heart"
-              })}
-              size={18}
-              color={colors.red}
-            />
-          ) : (
-            <Text />
-          )}
-          <Text>{this.props.title}</Text>
-          <Text>{moment(this.props.startTime).format("LT")}</Text>
-          <Text>{this.props.description}</Text>
-          <Text>Presented By:</Text>
+          <View style={styles.flexHeart}>
+            <Text style={styles.location}>{this.props.location}</Text>
+            {this.props.faveIds.includes(this.props.id) ? (
+              <Icon
+                name={Platform.select({
+                  ios: "ios-heart",
+                  android: "md-heart"
+                })}
+                size={20}
+                color={colors.red}
+              />
+            ) : (
+              <Text />
+            )}
+          </View>
+          <Text style={styles.title}>{this.props.title}</Text>
+          <Text style={styles.time}>{moment(this.props.startTime).format("LT")}</Text>
+          <Text style={styles.description}>{this.props.description}</Text>
+          <Text style={styles.location}>Presented by:</Text>
           <View>
             <TouchableHighlight
               onPress={() =>
@@ -46,12 +48,12 @@ export default class Session extends Component {
                 })
               }
             >
-              <View>
-                <Text>{this.props.speaker.name}</Text>
-                <Image
-                  style={{ width: 30, height: 30 }}
+              <View style={styles.flexSpeaker}>
+              <Image
+                  style={styles.image}
                   source={{ uri: this.props.speaker.image }}
                 />
+                <Text>{this.props.speaker.name}</Text>
               </View>
             </TouchableHighlight>
           </View>

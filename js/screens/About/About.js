@@ -1,11 +1,45 @@
 import React, { Component } from "react";
-import { View, Text, Image, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  LayoutAnimation,
+  ScrollView, 
+  TouchableOpacity
+} from "react-native";
 import styles from "./styles";
+
+class CollapsibleCodeOfConduct extends Component {
+  state = { isOpen: false };
+
+  _toggle() {
+    LayoutAnimation.easeInEaseOut();
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  render() {
+    const { styles, item } = this.props;
+    return (
+      <View>
+        <TouchableOpacity style={styles.sessionTitle} onPress={() => this._toggle()}>
+        {this.state.isOpen === false ? (<View style={styles.flexTitle}><Text style={styles.sessionTitle}>+  </Text><Text style={styles.sessionTitle}>{item.title}</Text></View>) :
+        (<View style={styles.flexTitle}><Text style={styles.sessionTitle}>-  </Text><Text style={styles.sessionTitle}>{item.title}</Text></View>)
+        }
+         
+        </TouchableOpacity>
+        {this.state.isOpen ? (
+          <Text style={styles.sessionDescription}>{item.description}</Text>
+        ) : null}
+      </View>
+    );
+  }
+}
 
 export default class About extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.displayLogo}>
           <Image
             style={styles.logo}
@@ -27,17 +61,14 @@ export default class About extends Component {
           renderItem={({ item }) => {
             return (
               <View style={styles.list}>
-                <Text style={styles.sessionTitle}>+  {item.title}</Text>
-                <Text style={styles.sessionDescription}>{item.description}</Text>
+                <CollapsibleCodeOfConduct styles={styles} item={item}/>
               </View>
             );
           }}
           keyExtractor={(item, index) => "" + index}
         />
-        <View>
           <Text>&copy; RED Academy 2017</Text>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }

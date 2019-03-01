@@ -37,6 +37,9 @@ const styles = StyleSheet.create({
         color: colors.black, 
         flexDirection: 'column'
       },
+      flexTitle: {
+        flexDirection: 'row'
+      },
       sessionTitle: {
         color: colors.purple,
         paddingBottom: 18, 
