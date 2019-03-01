@@ -4,14 +4,16 @@ import { Query } from "react-apollo";
 import Schedule from "./Schedule";
 import gql from "graphql-tag";
 import { formatSessionData } from "../../lib/helpers/dataFormatHelpers";
-import FavesContext from '../../context';
+import FavesContext from "../../context";
+import { fonts, colors } from "../../config/styles";
 
 export default class ScheduleContainer extends Component {
   static navigationOptions = {
     title: "Schedule",
-    headerTintColor: "#fff",
+    headerTintColor: colors.white,
     headerTitleStyle: {
-      fontSize: 25
+      fontSize: 22,
+      fontFamily: fonts.regular
     }
   };
 

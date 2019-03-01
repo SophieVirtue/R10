@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { colors } from '../../config/styles';
-import { Query } from 'react-apollo';
-import Maps from './Maps';
-import gql from 'graphql-tag';
+import React, { Component } from "react";
+import { View, Text } from "react-native";
+import { Query } from "react-apollo";
+import Maps from "./Maps";
+import gql from "graphql-tag";
+import { fonts, colors } from "../../config/styles";
 
 export default class MapsContainer extends Component {
-
   static navigationOptions = {
-    title: 'Map',
+    title: "Map",
     headerTintColor: colors.white,
     headerTitleStyle: {
-      fontSize: 25
+      fontSize: 22,
+      fontFamily: fonts.regular
     }
   };
 

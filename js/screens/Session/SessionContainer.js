@@ -4,13 +4,15 @@ import { Query } from "react-apollo";
 import Session from "./Session";
 import gql from "graphql-tag";
 import FavesContext from "../../context";
+import { fonts, colors } from "../../config/styles";
 
 export default class SessionContainer extends Component {
   static navigationOptions = {
     title: "Session",
-    headerTintColor: "#fff",
+    headerTintColor: colors.white,
     headerTitleStyle: {
-      fontSize: 25
+      fontSize: 22,
+      fontFamily: fonts.regular
     }
   };
 

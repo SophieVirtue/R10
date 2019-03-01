@@ -5,13 +5,15 @@ import Faves from "./Faves";
 import gql from "graphql-tag";
 import { formatSessionData } from "../../lib/helpers/dataFormatHelpers";
 import FavesContext from '../../context';
+import { fonts, colors } from '../../config/styles';
 
 export default class FavesContainer extends Component {
   static navigationOptions = {
     title: "Faves",
-    headerTintColor: "#fff",
+    headerTintColor: colors.white,
     headerTitleStyle: {
-      fontSize: 25
+      fontSize: 22,
+      fontFamily: fonts.regular
     }
   };
 
