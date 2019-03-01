@@ -82,6 +82,7 @@ export default class About extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
+      <View style={styles.display}>
         <View style={styles.displayLogo}>
           <Image
             style={styles.logo}
@@ -109,7 +110,8 @@ export default class About extends Component {
           }}
           keyExtractor={(item, index) => "" + index}
         />
-        <Text>&copy; RED Academy 2017</Text>
+        </View>
+        <Text style={styles.RED}>&copy; RED Academy 2017</Text> 
       </ScrollView>
     );
   }

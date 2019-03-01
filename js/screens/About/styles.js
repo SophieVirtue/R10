@@ -51,6 +51,16 @@ const styles = StyleSheet.create({
         fontFamily: fonts.light, 
         fontSize: 17, 
         paddingBottom: 10
+      },
+      RED: {
+        paddingBottom: 36,
+        paddingTop: 18,
+        fontFamily: fonts.light,
+        fontSize: 18
+      },
+      display: {
+        borderBottomColor: colors.lightGrey,
+        borderBottomWidth: 1 
       }
   });
 
