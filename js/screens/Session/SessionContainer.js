@@ -39,7 +39,7 @@ export default class SessionContainer extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
+          if (loading) return <ActivityIndicator size="large" style={{ height: '100%' }} />;
           if (error) return <Text>Error</Text>;
 
           return (

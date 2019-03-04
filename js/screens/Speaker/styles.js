@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     padding: 15,
     maxHeight: 645,
     borderRadius: 10,
-    paddingTop: 25,
-    // paddingBottom: 80
+    paddingTop: 25
   },
   image: {
     width: 120,
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.white,
     paddingTop: 13,
-    paddingBottom: 13,
+    paddingBottom: 13
   }, 
   button: {
     width: '80%',

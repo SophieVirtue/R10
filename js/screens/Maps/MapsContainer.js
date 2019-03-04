@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
-import { Query } from "react-apollo";
 import Maps from "./Maps";
-import gql from "graphql-tag";
 import { fonts, colors } from "../../config/styles";
 
 export default class MapsContainer extends Component {
@@ -17,9 +14,10 @@ export default class MapsContainer extends Component {
 
   render() {
     return (
-      <View>
-        <Text> Maps! </Text>
-      </View>
+      <Maps
+        latitude={49.2633479}
+        longitude={-123.1403165}
+    />
     );
   }
 }
