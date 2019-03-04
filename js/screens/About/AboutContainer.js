@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import { Text, ActivityIndicator } from 'react-native';
-import { Query } from 'react-apollo';
-import About from './About';
-import gql from 'graphql-tag';
-import { colors, fonts } from '../../config/styles';
+import React, { Component } from "react";
+import { Text, ActivityIndicator } from "react-native";
+import { Query } from "react-apollo";
+import About from "./About";
+import gql from "graphql-tag";
+import { colors, fonts } from "../../config/styles";
 
 export default class AboutContainer extends Component {
-
   static navigationOptions = {
-    title: 'About',
+    title: "About",
     headerTintColor: colors.white,
     headerTitleStyle: {
       fontSize: 22,
@@ -18,23 +17,27 @@ export default class AboutContainer extends Component {
 
   render() {
     return (
-        <Query query={gql`
-            {
-                allConducts {
-                    description
-                    id
-                    order
-                    title
-                }
+      <Query
+        query={gql`
+          {
+            allConducts {
+              description
+              id
+              order
+              title
             }
-          `}
-        >
+          }
+        `}
+      >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator size="large" style={{ height: '100%' }} />;
+          if (loading)
+            return (
+              <ActivityIndicator size="large" style={{ height: "100%" }} />
+            );
           if (error) return <Text>Error</Text>;
           return <About data={data} />;
-    }}
-    </Query>
+        }}
+      </Query>
     );
   }
 }

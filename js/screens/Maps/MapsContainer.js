@@ -13,11 +13,6 @@ export default class MapsContainer extends Component {
   };
 
   render() {
-    return (
-      <Maps
-        latitude={49.2633479}
-        longitude={-123.1403165}
-    />
-    );
+    return <Maps latitude={49.2633479} longitude={-123.1403165} />;
   }
 }

@@ -35,7 +35,6 @@ class CollapsibleCodeOfConduct extends Component {
 
   render() {
     const { item } = this.props;
-    // const animatedIcon = Animated.createAnimatedComponent(Icon);
     const spinIcon = this.state.spinValue.interpolate({
       inputRange: [0, 1],
       outputRange: ["0deg", "360deg"]

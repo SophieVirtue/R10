@@ -40,7 +40,10 @@ export default class ScheduleContainer extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator size="large" style={{ height: '100%' }} />;
+          if (loading)
+            return (
+              <ActivityIndicator size="large" style={{ height: "100%" }} />
+            );
           if (error) return <Text>Error</Text>;
           return (
             <FavesContext.Consumer>
