@@ -37,21 +37,6 @@ const styles = StyleSheet.create({
         color: colors.black, 
         flexDirection: 'column'
       },
-      flexTitle: {
-        flexDirection: 'row'
-      },
-      sessionTitle: {
-        color: colors.purple,
-        paddingBottom: 10, 
-        fontSize: 17,
-        fontFamily: fonts.regular,
-        paddingLeft: 10
-      },
-      sessionDescription: {
-        fontFamily: fonts.light, 
-        fontSize: 17, 
-        paddingBottom: 10
-      },
       RED: {
         paddingBottom: 36,
         paddingTop: 18,
