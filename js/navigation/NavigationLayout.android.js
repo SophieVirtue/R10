@@ -66,8 +66,9 @@ export default createDrawerNavigator(
     About: AboutStack
   },
   {
+    drawerWidth: 150,
     defaultNavigationOptions: ({ navigation }) => ({
-      drawerIcon: ({ focused, horizontal, tintColor }) => {
+      drawerIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === "Schedule") {
