@@ -9,6 +9,7 @@ import {
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import { colors } from "../../config/styles";
+import PropTypes from 'prop-types'
 
 export default class CollapsibleCodeOfConduct extends Component {
     state = {
@@ -73,3 +74,10 @@ export default class CollapsibleCodeOfConduct extends Component {
       );
     }
   }
+
+  CollapsibleCodeOfConduct.propTypes = {
+    item: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired
+    })
+  };

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -9,33 +9,34 @@ import {
   ScrollView
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
-export default class Speaker extends Component {
+const Speaker = props => {
+  let { navigation, image, name, bio, url } = props;
   state = { modalVisable: false };
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.flexSpeaker}>
-          <View style={{ paddingTop: 40 }}>
-            <TouchableHighlight
-              onPress={() => {
-                this.props.navigation.goBack();
-              }}
-            >
-              <Icon name="ios-close" style={styles.x} size={50} />
-            </TouchableHighlight>
-          </View>
-          <Text style={styles.heading}>About the Speaker</Text>
+  return (
+    <View style={styles.container}>
+      <View style={styles.flexSpeaker}>
+        <View style={{ paddingTop: 40 }}>
+          <TouchableHighlight
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <Icon name="ios-close" style={styles.x} size={50} />
+          </TouchableHighlight>
         </View>
-        <ScrollView style={styles.infoSection}>
-          <Image style={styles.image} source={{ uri: this.props.image }} />
-          <Text style={styles.speakerName}>{this.props.name}</Text>
-          <Text style={styles.bio}>{this.props.bio}</Text>
-          <View>
+        <Text style={styles.heading}>About the Speaker</Text>
+      </View>
+      <ScrollView style={styles.infoSection}>
+        <Image style={styles.image} source={{ uri: image }} />
+        <Text style={styles.speakerName}>{name}</Text>
+        <Text style={styles.bio}>{bio}</Text>
+        <View>
           <TouchableOpacity
-            onPress={() => Linking.openURL(`${this.props.url}`)}
+            onPress={() => Linking.openURL(`${url}`)}
             style={styles.button}
           >
             <LinearGradient
@@ -47,9 +48,18 @@ export default class Speaker extends Component {
               <Text style={styles.buttonText}>Read More on Wikipedia</Text>
             </LinearGradient>
           </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </View>
-    );
-  }
-}
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+
+Speaker.propTypes = {
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired
+};
+
+export default Speaker;
