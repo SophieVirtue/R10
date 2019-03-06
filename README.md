@@ -2,18 +2,14 @@
 
 An app for a tech conference compatible with both IOS and Android.  The landing screen is the conference schedule, where you can click on individual sessions for more information.  On the sessions screen, you can choose to favourite a session, or click on the speaker to get more information on the speaker.  All favourited sessions can then be found in the Faves area.  There is also a map showing the conference location, and an about screen with an animated Code of Conduct.
 
+![](R10Giphy.gif)
+
 ## Technologies Used
 
 - React Native
 - GraphQL 
 - React Native Maps
 - React Navigation
-
-## Screenshots
-
-![Screenshot](https://github.com/SophieVirtue/R10/blob/master/Schedule.png)
-
-![Screenshot](https://github.com/SophieVirtue/R10/blob/master/Session.png)
 
 ### Installation
 
