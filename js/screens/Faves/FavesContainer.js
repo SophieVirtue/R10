@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Text, ActivityIndicator } from "react-native";
+import { Text, ActivityIndicator, View } from "react-native";
 import { Query } from "react-apollo";
 import Faves from "./Faves";
 import gql from "graphql-tag";
 import { formatSessionData } from "../../lib/helpers/dataFormatHelpers";
-import FavesContext from '../../context';
-import { fonts, colors } from '../../config/styles';
+import FavesContext from "../../context";
+import { fonts, colors } from "../../config/styles";
 
 export default class FavesContainer extends Component {
   static navigationOptions = {
@@ -40,23 +40,51 @@ export default class FavesContainer extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator size="large" style={{ height: '100%' }} />;
+          if (loading)
+            return (
+              <ActivityIndicator size="large" style={{ height: "100%" }} />
+            );
           if (error) return <Text>Error</Text>;
+
           return (
             <FavesContext.Consumer>
               {({ faveIds, setFaveId, removeFaveId }) => {
-                let filteredSession = data.allSessions.filter(item => {
+                let filteredSessions = data.allSessions.filter(item => {
                   return faveIds.includes(item.id);
                 });
-                return (
-                  <Faves
-                    data={formatSessionData(filteredSession)}
-                    navigation={this.props.navigation}
-                    faveIds={faveIds}
-                    setFaveId={setFaveId}
-                    removeFaveId={removeFaveId}
-                  />
-                );
+                if (filteredSessions.length === 0) {
+                  return (
+                    <View
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: colors.purple,
+                          fontSize: 20,
+                          padding: 50,
+                          paddingTop: 220,
+                          textAlign: 'center'
+                        }}
+                      >
+                        You haven't Faved any Sessions yet! When you do, they
+                        will show up here.
+                      </Text>
+                    </View>
+                  );
+                } else {
+                  return (
+                    <Faves
+                      data={formatSessionData(filteredSession)}
+                      navigation={this.props.navigation}
+                      faveIds={faveIds}
+                      setFaveId={setFaveId}
+                      removeFaveId={removeFaveId}
+                    />
+                  );
+                }
               }}
             </FavesContext.Consumer>
           );
@@ -65,4 +93,3 @@ export default class FavesContainer extends Component {
     );
   }
 }
-

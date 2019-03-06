@@ -52,6 +52,7 @@ const Session = props => {
         <Text style={styles.location}>Presented by:</Text>
         <View>
           <TouchableHighlight
+          underlayColor={colors.white}
             onPress={() =>
               navigation.navigate("Speaker", {
                 bio: speaker.bio,

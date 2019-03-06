@@ -22,6 +22,7 @@ const Faves = props => {
           return (
             <View>
               <TouchableHighlight
+              underlayColor={colors.white}
                 onPress={() =>
                   navigate("Session", {
                     description: item.description,

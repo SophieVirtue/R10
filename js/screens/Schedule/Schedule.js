@@ -22,6 +22,7 @@ const Schedule = props => {
           return (
             <View>
               <TouchableHighlight
+              underlayColor={colors.white}
                 onPress={() => {
                   if (!item.speaker) {
                     navigate("", {});

@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import PropTypes from "prop-types";
+import { colors } from '../../config/styles'
 
 const Speaker = props => {
   let { navigation, image, name, bio, url } = props;
@@ -21,6 +22,7 @@ const Speaker = props => {
       <View style={styles.flexSpeaker}>
         <View style={{ paddingTop: 40 }}>
           <TouchableHighlight
+          underlayColor={colors.black}
             onPress={() => {
               navigation.goBack();
             }}
